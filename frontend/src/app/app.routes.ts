@@ -1,9 +1,13 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { TelaInicialComponent } from './pages/tela-inicial/tela-inicial.component';
+import { CriarRotinasComponent } from './pages/criar-rotinas/criar-rotinas.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent }, // <-- Adicione esta linha
-  { path: 'cadastro', component: CadastroComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'cadastro', component: CadastroComponent },
+  { path: 'telaInicial', component: TelaInicialComponent },
+  { path: 'criarRotinas', component: CriarRotinasComponent}
 ];
