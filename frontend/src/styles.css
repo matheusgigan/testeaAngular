@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+a[routerLink] {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
