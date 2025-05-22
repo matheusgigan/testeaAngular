@@ -6,14 +6,13 @@
   <input type="number" [(ngModel)]="metaRotina" name="metaRotina" required><br><br>
   <label>Insira o tempo da sua rotina:</label>
   <input type="number" [(ngModel)]="tempoRotina" name="tempoRotina" placeholder="Tempo (em minutos)" min='1' required><br><br>
-    <select id="tipoRotina">
-        <option value="">Escolha o tipo da rotina</option>
-        <option value="estudo">Estudo</option>
-        <option value="trabalho">Trabalho</option>
-        <option value="exercicio">Exercício</option>
-        <option value="lazer">Lazer</option>
+    <select id="tipoRotina" [(ngModel)]="tipoRotina" name="tipoRotina" required>
+      <option value="">Escolha o tipo da rotina</option>
+      <option value="estudo">Estudo</option>
+      <option value="trabalho">Trabalho</option>
+      <option value="exercicio">Exercício</option>
+      <option value="lazer">Lazer</option>
     </select>
-
   <button type="submit">Entrar</button>
 </form>
   <button routerLink="/telaInicial">Cancelar</button>

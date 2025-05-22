@@ -1,22 +1,40 @@
- <h2>Minhas Rotinas</h2>
+<h2>Minhas Rotinas</h2>
 
-        <!-- Campo de busca -->
-        <label for="site-search">Procurar rotina:</label>
-        <input type="search" id="site-search" name="q" placeholder="Digite o nome da rotina" />
+<!-- Campo de busca -->
+<label for="site-search">Procurar rotina:</label>
+<input
+  type="search"
+  id="site-search"
+  name="q"
+  placeholder="Digite o nome da rotina"
+  [(ngModel)]="busca"
+/>
 
-        <!-- Filtro por status -->
-        <label for="filtroRotina">Filtrar por status:</label>
-        <select id="filtroRotina">
-            <option value="">Todos</option>
-            <option value="concluido">Concluído</option>
-            <option value="em-andamento">Em andamento</option>
-        </select>
+<!-- Filtro por status -->
+<label for="filtroRotina">Filtrar por status:</label>
+<select id="filtroRotina" [(ngModel)]="filtroStatus">
+  <option value="">Todos</option>
+  <option value="concluido">Concluído</option>
+  <option value="em-andamento">Em andamento</option>
+</select>
 
-        <!-- Contêiner para os cards -->
-        <div id="rotinasContainer" class="rotinas-container">
-            <!-- Os cards das rotinas serão gerados dinamicamente aqui -->
-        </div>
+<!-- Contêiner para os cards -->
+<div class="rotinas-container">
+  <div
+    *ngFor="let rotina of rotinasFiltradas"
+    class="rotina-card"
+  >
+    <h3>{{ rotina.nome }}</h3>
+    <p>Meta de dias: {{ rotina.meta }}</p>
+    <p>Tempo: {{ rotina.tempo }} minutos</p>
+    <p>Tipo: {{ rotina.tipo }}</p>
+    <p>Status: {{ rotina.status || 'em-andamento' }}</p>
+  </div>
+  <div *ngIf="rotinasFiltradas.length === 0">
+    Nenhuma rotina encontrada.
+  </div>
+</div>
 
-        <hr>
-        <button routerLink="/criarRotinas">Nova rotina</button>
-        <button routerLink="/telaInicial">Voltar</button>
+<hr />
+<button routerLink="/criarRotinas">Nova rotina</button>
+<button routerLink="/telaInicial">Voltar</button>

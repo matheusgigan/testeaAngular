@@ -9,11 +9,21 @@ import { RouterModule } from '@angular/router';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  email = '';
+ email = '';
   password = '';
+  erro = '';
 
   onSubmit() {
-    // lógica de login (pode deixar vazio por enquanto)
-    console.log('Formulário enviado!');
+    // Simulação de usuário e senha
+    const usuarioDemo = 'usuario@teste.com';
+    const senhaDemo = '123456';
+
+    if (this.email === usuarioDemo && this.password === senhaDemo) {
+      this.erro = '';
+      // Redireciona para a tela inicial
+      window.location.href = '/telaInicial';
+    } else {
+      this.erro = 'E-mail ou senha inválidos!';
+    }
   }
 }

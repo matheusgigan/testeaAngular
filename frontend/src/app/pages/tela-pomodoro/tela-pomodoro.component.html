@@ -1,7 +1,24 @@
-<h2 id="tituloPomodoro">Pomodoro</h2>
-<p id="contador">00:00</p>
-<button id="comecarPomodoroBtn" onclick="comecarPomodoro()">Começar</button>
-<button id="pausarPomodoroBtn" onclick="pausarPomodoro()">Pausar</button>
-<button id="pausarPomodoroBtn" onclick="pausarPomodoro()">Cancelar</button>
-<button id="pausarPomodoroBtn" onclick="pausarPomodoro()">Continuar</button>
-<button routerLink="/telaInicial">Voltar</button>
+<h2>Pomodoro</h2>
+<div style="font-size: 2em; margin: 20px 0;">
+  {{ minutos }}:{{ segundos }}
+</div>
+
+<!-- Botão Iniciar/Retomar e Voltar -->
+<button *ngIf="status === 'parado' || status === 'pausado'" (click)="iniciar()">
+  {{ status === 'pausado' ? 'Retomar' : 'Iniciar' }}
+</button>
+<button *ngIf="status === 'parado'" routerLink="/telaInicial">Voltar</button>
+
+<!-- Quando iniciado, aparece apenas Pausar e Cancelar -->
+<div *ngIf="status === 'iniciado'">
+  <button (click)="pausar()">Pausar</button>
+  <button (click)="cancelar()">Cancelar</button>
+</div>
+
+<!-- Quando pausado, aparece apenas Resetar e Cancelar -->
+<div *ngIf="status === 'pausado'">
+  <button (click)="resetar()">Resetar</button>
+  <button (click)="cancelar()">Cancelar</button>
+</div>
+
+<p>Status: {{ status }}</p>
