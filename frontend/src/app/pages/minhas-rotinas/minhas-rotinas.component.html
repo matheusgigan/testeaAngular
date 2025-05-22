@@ -1,0 +1,22 @@
+ <h2>Minhas Rotinas</h2>
+
+        <!-- Campo de busca -->
+        <label for="site-search">Procurar rotina:</label>
+        <input type="search" id="site-search" name="q" placeholder="Digite o nome da rotina" />
+
+        <!-- Filtro por status -->
+        <label for="filtroRotina">Filtrar por status:</label>
+        <select id="filtroRotina">
+            <option value="">Todos</option>
+            <option value="concluido">Concluído</option>
+            <option value="em-andamento">Em andamento</option>
+        </select>
+
+        <!-- Contêiner para os cards -->
+        <div id="rotinasContainer" class="rotinas-container">
+            <!-- Os cards das rotinas serão gerados dinamicamente aqui -->
+        </div>
+
+        <hr>
+        <button routerLink="/criarRotinas">Nova rotina</button>
+        <button routerLink="/telaInicial">Voltar</button>
