@@ -24,11 +24,19 @@
     *ngFor="let rotina of rotinasFiltradas"
     class="rotina-card"
   >
+    <button class="btn-excluir" (click)="excluirRotina(rotina)">&#10006;</button>
+    <button class="btn-editar" (click)="editarRotina(rotina)">Editar</button>
     <h3>{{ rotina.nome }}</h3>
     <p>Meta de dias: {{ rotina.meta }}</p>
     <p>Tempo: {{ rotina.tempo }} minutos</p>
     <p>Tipo: {{ rotina.tipo }}</p>
+    <p>
+      Progresso: 
+      {{ rotina.diasConcluidos || 0 }}/{{ rotina.meta }} 
+      ({{ ((rotina.diasConcluidos || 0) / rotina.meta * 100) | number:'1.0-0' }}%)
+    </p>
     <p>Status: {{ rotina.status || 'em-andamento' }}</p>
+    <button (click)="comecarRotina(rotina)">Começar</button>
   </div>
   <div *ngIf="rotinasFiltradas.length === 0">
     Nenhuma rotina encontrada.

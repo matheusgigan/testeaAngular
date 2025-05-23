@@ -1,4 +1,4 @@
-<h2>Pomodoro</h2>
+<h2>Pomodoro - {{ nomeRotina }}</h2>
 <div style="font-size: 2em; margin: 20px 0;">
   {{ minutos }}:{{ segundos }}
 </div>
@@ -21,4 +21,13 @@
   <button (click)="cancelar()">Cancelar</button>
 </div>
 
+<div *ngIf="mensagemConcluida" class="mensagem-concluida">
+  <h3>Rotina concluída! Parabéns!</h3>
+  <button routerLink="/minhasRotinas">Ver minhas rotinas</button>
+</div>
+
+<!-- Os outros botões só aparecem se NÃO estiver concluído -->
+<div *ngIf="!mensagemConcluida">
+  <!-- Botões de iniciar, pausar, resetar, cancelar -->
+</div>
 <p>Status: {{ status }}</p>

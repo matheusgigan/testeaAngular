@@ -1,11 +1,8 @@
 <h2>Login</h2>
 <form (ngSubmit)="onSubmit()">
-  <label>Email</label>
-  <input type="email" [(ngModel)]="email" name="email" required><br><br>
-  <label>Senha</label>
-  <input type="password" [(ngModel)]="password" name="password" required><br><br>
+  <input type="email" [(ngModel)]="email" name="email" placeholder="E-mail" required>
+  <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha" required>
   <button type="submit">Entrar</button>
 </form>
-<p>Não tem conta?<a routerLink="/cadastro">Cadastre-se</a></p>
-
-<p><a routerLink="/telaInicial">inicio</a></p>
+<div *ngIf="erro" style="color:red">{{ erro }}</div>
+<button routerLink="/cadastro">Criar conta</button>

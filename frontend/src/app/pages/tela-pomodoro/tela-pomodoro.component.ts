@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common'; // Adicione esta linha
+import { OnInit } from '@angular/core';
 @Component({
   selector: 'app-tela-pomodoro',
   standalone: true,
@@ -9,22 +10,25 @@ import { CommonModule } from '@angular/common'; // Adicione esta linha
   styleUrl: './tela-pomodoro.component.css'
 })
 export class TelaPomodoroComponent {
-  tempoPadrao = 25 * 60; // 25 minutos em segundos
+  nomeRotina = '';
+  tempoPadrao = 25 * 60;
   tempoRestante = this.tempoPadrao;
   status: 'parado' | 'iniciado' | 'pausado' = 'parado';
   private intervalId: any = null;
+  mensagemConcluida: boolean = false;
 
   iniciar() {
     if (this.status !== 'iniciado') {
       this.status = 'iniciado';
       this.intervalId = setInterval(() => {
-        if (this.tempoRestante > 0) {
-          this.tempoRestante--;
-        } else {
-          this.pararTimer();
-          this.status = 'parado';
-        }
-      }, 1000);
+    if (this.tempoRestante > 0) {
+      this.tempoRestante--;
+    } else {
+      this.pararTimer();
+      this.status = 'parado';
+      this.finalizarRotina(); // <-- aqui!
+      }
+    }, 1000);
     }
   }
 
@@ -35,6 +39,15 @@ export class TelaPomodoroComponent {
     }
   }
 
+  ngOnInit() {
+    const rotina = JSON.parse(localStorage.getItem('rotinaSelecionada') || 'null');
+    if (rotina) {
+      this.nomeRotina = rotina.nome;
+      this.tempoPadrao = rotina.tempo * 60; // tempo em minutos para segundos
+      this.tempoRestante = this.tempoPadrao;
+      // Você pode puxar outros dados se quiser
+    }
+  }
   resetar() {
     this.status = 'parado';
     this.pararTimer();
@@ -61,5 +74,23 @@ export class TelaPomodoroComponent {
   get segundos(): string {
     return (this.tempoRestante % 60).toString().padStart(2, '0');
   }
+
+  private finalizarRotina() {
+  const rotinaSelecionada = JSON.parse(localStorage.getItem('rotinaSelecionada') || 'null');
+  if (rotinaSelecionada && rotinaSelecionada.usuarioEmail) {
+    const chave = `rotinas_${rotinaSelecionada.usuarioEmail}`;
+    let rotinas = JSON.parse(localStorage.getItem(chave) || '[]');
+    const index = rotinas.findIndex((r: any) => r.nome === rotinaSelecionada.nome);
+    if (index !== -1) {
+      rotinas[index].diasConcluidos = (rotinas[index].diasConcluidos || 0) + 1;
+      if (rotinas[index].diasConcluidos >= rotinas[index].meta) {
+        rotinas[index].status = 'concluido';
+        this.mensagemConcluida = true;
+      }
+      localStorage.setItem(chave, JSON.stringify(rotinas));
+    }
+  }
+}
+  
 }
 

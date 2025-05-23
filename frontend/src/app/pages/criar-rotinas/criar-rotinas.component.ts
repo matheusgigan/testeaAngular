@@ -18,20 +18,22 @@ export class CriarRotinasComponent {
 
   constructor(private router: Router) {}
 
-  onSubmit() {
-    const novaRotina = {
-      nome: this.nomeRotina,
-      meta: this.metaRotina,
-      tempo: this.tempoRotina,
-      tipo: this.tipoRotina
-    };
+ onSubmit() {
+  const novaRotina = {
+    nome: this.nomeRotina,
+    meta: this.metaRotina,
+    tempo: this.tempoRotina,
+    tipo: this.tipoRotina,
+    diasConcluidos: 0
+  };
 
-    // Recupera rotinas existentes ou cria array vazio
-    const rotinas = JSON.parse(localStorage.getItem('rotinas') || '[]');
+  const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
+  if (usuario) {
+    const chave = `rotinas_${usuario.email}`;
+    let rotinas = JSON.parse(localStorage.getItem(chave) || '[]');
     rotinas.push(novaRotina);
-    localStorage.setItem('rotinas', JSON.stringify(rotinas));
-
-    // Redireciona para Minhas Rotinas
+    localStorage.setItem(chave, JSON.stringify(rotinas));
     this.router.navigate(['/minhasRotinas']);
   }
+}
 }

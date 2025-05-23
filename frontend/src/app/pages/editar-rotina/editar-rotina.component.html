@@ -1,0 +1,18 @@
+<h2>Editar Rotina</h2>
+<form (ngSubmit)="salvar()">
+  <label>Nome:</label>
+  <input type="text" [(ngModel)]="rotina.nome" name="nome" required><br>
+  <label>Meta de dias:</label>
+  <input type="number" [(ngModel)]="rotina.meta" name="meta" required><br>
+  <label>Tempo (min):</label>
+  <input type="number" [(ngModel)]="rotina.tempo" name="tempo" required><br>
+  <label>Tipo:</label>
+  <select [(ngModel)]="rotina.tipo" name="tipo" required>
+    <option value="estudo">Estudo</option>
+    <option value="trabalho">Trabalho</option>
+    <option value="exercicio">Exercício</option>
+    <option value="lazer">Lazer</option>
+  </select><br>
+  <button type="submit">Salvar</button>
+  <button type="button" routerLink="/minhasRotinas">Cancelar</button>
+</form>

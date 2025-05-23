@@ -13,5 +13,9 @@ export const routes: Routes = [
   { path: 'telaInicial', component: TelaInicialComponent },
   { path: 'criarRotinas', component: CriarRotinasComponent},
   { path: 'telaPomodoro', component: TelaPomodoroComponent},
-  { path: 'minhasRotinas', component: MinhasRotinasComponent } // Adicione esta linha
+  { path: 'minhasRotinas', component: MinhasRotinasComponent }, // Adicione esta linha
+  {
+  path: 'editarRotina',
+  loadComponent: () => import('./pages/editar-rotina/editar-rotina.component').then(m => m.EditarRotinaComponent)
+  }
 ];
