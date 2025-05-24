@@ -1,0 +1,7 @@
+<div class="xp-bar">
+  Nível: {{ getLevel() }}<br>
+  XP: {{ getLevelProgress() }}/100
+  <div style="background:#eee;width:100px;height:10px;">
+    <div style="background:#4caf50;height:10px;" [style.width.%]="getLevelProgressPercent()"></div>
+  </div>
+</div>

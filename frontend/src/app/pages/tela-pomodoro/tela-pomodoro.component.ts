@@ -75,6 +75,29 @@ export class TelaPomodoroComponent {
     return (this.tempoRestante % 60).toString().padStart(2, '0');
   }
 
+  getXp(): number {
+  const usuario = localStorage.getItem('usuarioLogado') || '';
+  return Number(localStorage.getItem(`xp_${usuario}`)) || 0;
+}
+
+  addXp(qtd: number) {
+    const usuario = localStorage.getItem('usuarioLogado') || '';
+    let xp = this.getXp();
+    xp += qtd;
+    localStorage.setItem(`xp_${usuario}`, xp.toString());
+  }
+
+  getLevel(): number {
+    return Math.floor(this.getXp() / 100) + 1;
+  }
+
+  getLevelProgress(): number {
+    return this.getXp() % 100;
+  }
+
+  getLevelProgressPercent(): number {
+    return (this.getLevelProgress() / 100) * 100;
+  }
   private finalizarRotina() {
   const rotinaSelecionada = JSON.parse(localStorage.getItem('rotinaSelecionada') || 'null');
   if (rotinaSelecionada && rotinaSelecionada.usuarioEmail) {
@@ -90,7 +113,9 @@ export class TelaPomodoroComponent {
       localStorage.setItem(chave, JSON.stringify(rotinas));
     }
   }
+  const xpGanho = 20; // Defina quanto XP por rotina
+    this.addXp(xpGanho);
+    alert(`Parabéns! Você ganhou ${xpGanho} XP!`);
+  }
 }
   
-}
-

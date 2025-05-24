@@ -38,48 +38,59 @@ export class MinhasRotinasComponent implements OnInit, OnDestroy {
   }
 
   carregarRotinas() {
-  const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
-  if (usuario) {
-    const chave = `rotinas_${usuario.email}`;
-    this.rotinas = JSON.parse(localStorage.getItem(chave) || '[]');
-    let alterou = false;
-    this.rotinas.forEach(r => {
-      if ((r.diasConcluidos || 0) >= r.meta) {
-        if (r.status !== 'concluido') {
-          r.status = 'concluido';
-          alterou = true;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
+      if (usuario) {
+        const chave = `rotinas_${usuario.email}`;
+        this.rotinas = JSON.parse(localStorage.getItem(chave) || '[]');
+        let alterou = false;
+        this.rotinas.forEach(r => {
+          if ((r.diasConcluidos || 0) >= r.meta) {
+            if (r.status !== 'concluido') {
+              r.status = 'concluido';
+              alterou = true;
+            }
+          }
+        });
+        if (alterou) {
+          localStorage.setItem(chave, JSON.stringify(this.rotinas));
         }
+      } else {
+        this.rotinas = [];
       }
-    });
-    if (alterou) {
-      localStorage.setItem('rotinas', JSON.stringify(this.rotinas));
+    } else {
+      this.rotinas = [];
     }
-  } else {
-    this.rotinas = [];
   }
-}
+
   excluirRotina(rotina: any) {
-  const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
-  if (usuario) {
-    const chave = `rotinas_${usuario.email}`;
-    this.rotinas = this.rotinas.filter(r => r.nome !== rotina.nome);
-    localStorage.setItem(chave, JSON.stringify(this.rotinas));
-    this.carregarRotinas();
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
+      if (usuario) {
+        const chave = `rotinas_${usuario.email}`;
+        this.rotinas = this.rotinas.filter(r => r.nome !== rotina.nome);
+        localStorage.setItem(chave, JSON.stringify(this.rotinas));
+        this.carregarRotinas();
+      }
+    }
   }
-}
-editarRotina(rotina: any) {
-  if (typeof window !== 'undefined' && window.localStorage) {
-    localStorage.setItem('rotinaEditando', JSON.stringify(rotina));
+
+  editarRotina(rotina: any) {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('rotinaEditando', JSON.stringify(rotina));
+    }
+    this.router.navigate(['/editarRotina']);
   }
-  this.router.navigate(['/editarRotina']);
-}
+
   comecarRotina(rotina: any) {
-  const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
-  if (usuario) {
-    localStorage.setItem('rotinaSelecionada', JSON.stringify({ ...rotina, usuarioEmail: usuario.email }));
-    this.router.navigate(['/telaPomodoro']);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
+      if (usuario) {
+        localStorage.setItem('rotinaSelecionada', JSON.stringify({ ...rotina, usuarioEmail: usuario.email }));
+        this.router.navigate(['/telaPomodoro']);
+      }
+    }
   }
-}
 
   get rotinasFiltradas() {
     return this.rotinas.filter(r => {
