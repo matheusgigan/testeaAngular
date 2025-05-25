@@ -7,7 +7,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Conexão com o banco de dados
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
