@@ -1,5 +1,6 @@
 <h2>Cadastro</h2>
 <form (ngSubmit)="cadastrar()">
+  <input type="text" [(ngModel)]="nome" name="nome" placeholder="Nome" required>
   <input type="email" [(ngModel)]="email" name="email" placeholder="E-mail" required>
   <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha" required>
   <button type="submit">Cadastrar</button>

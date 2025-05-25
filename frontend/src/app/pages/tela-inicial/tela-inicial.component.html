@@ -1,9 +1,58 @@
-<h2>Inicio</h2>
-<br><br>
-<button routerLink="/minhasRotinas">Minhas Rotinas</button>
-<button routerLink="/criarRotinas">Criar Rotina</button>
-<button>Estatísticas</button>
-<div class="streak-info">
-  🔥 Sequência de dias acessando: {{ streak }}
+<div class="full-page-container">
+  <div class="header-container">
+    <div class="header-content">
+    <!-- Cabeçalho -->
+      <h1>Seja bem-vindo, {{ nomeUsuario }} !</h1>
+      <div class="level-badge">LVL {{ nivelUsuario }}</div>
+    </div>
+  </div>
+  <!-- Conteúdo principal em colunas-->
+  <div class="main-content">
+  <!-- Contagem de dias e coruja -->
+    <div class="owl-column">
+      <div class="owl-container">
+        <img [src]="imagemCoruja" alt="Coruja" class="owl-img">
+        <div class="owl-stats">
+          <h3>Progresso Diário</h3>
+          <p>🔥{{dias}} dias</p>
+        </div>
+      </div>
+    </div>
+    <!-- Coluna de rotinas -->
+     <div class="routines-column">
+      <div class="routines-header">
+        <h2>Minhas Rotinas</h2>
+        <button class="btn btn-primary" (click)="criarNovaRotina()">
+          + Nova Rotina
+        </button>
+      </div>
+      @if (rotinas.length > 0) {
+        <div class="routines-container">
+          @for(rotina of rotinas; track rotina.nome; let i = $index) {
+            <div class="routine-card">
+              <div class="routine-info">
+                <h3>{{i+1}}.{{rotina.nome}}</h3>
+                <p>{{rotina.descricao || 'Sem descrição'}}</p>
+                <div class="routine-meta">
+                  <span>Meta: {{rotina.meta}} dias</span>
+                  <span>Concluídos: {{rotina.diasConcluidos || 0}}</span>
+                </div>
+              </div>
+              <div class="routine actions">
+                <button class="btn btn-sm" (click)="comecarRotina(rotina)">Iniciar</button>
+                <button class="btn btn-sm btn-secondary" (click)="editarRotina(rotina)">Editar</button>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="empty-routines">
+          <p>Sem rotinas por enquanto</p>
+          <button class="btn btn-primary" (click)="criarNovaRotina()">
+            Criar minha primeira rotina
+          </button>
+        </div>
+      }
+     </div>
+  </div>
 </div>
-<app-xp-bar [username]="username"></app-xp-bar>

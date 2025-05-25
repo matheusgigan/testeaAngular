@@ -1,58 +1,82 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { XpBarComponent } from '../../shared/xp-bar/xp-bar.component'; // ajuste o caminho se necessário
-
+import { Component } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
 @Component({
   selector: 'app-tela-inicial',
   standalone: true,
-  imports: [RouterModule, XpBarComponent],
+  imports: [RouterModule],
   templateUrl: './tela-inicial.component.html',
   styleUrl: './tela-inicial.component.css'
 })
-export class TelaInicialComponent implements OnInit {
-  streak: number = 0;
-  username: string = '';
+export class TelaInicialComponent {
+  //Usuário de teste - UI
+  nomeUsuario: string = '';
+  nivelUsuario: number = 1;
+  // dailyProgress: number = 96;
+  dias: number = 12;
+  //Imagem de teste
+  imagemCoruja = 'https://img.lovepik.com/element/45006/3503.png_860.png'; 
+  rotinas: any[] = [];
 
-  ngOnInit() {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      this.username = localStorage.getItem('usuarioLogado') || '';
-      console.log('Username:', this.username);
-      this.registrarAcesso();
-      this.streak = this.calcularStreak();
-      console.log('Streak:', this.streak);
-    }
+  constructor(
+    private router: Router,
+){
+    this.carregarRotinas();
   }
 
-  registrarAcesso() {
-    if (typeof window !== 'undefined' && window.localStorage && this.username) {
-      const hoje = new Date().toISOString().slice(0, 10);
-      const chave = `acessos_${this.username}`;
-      let acessos: string[] = JSON.parse(localStorage.getItem(chave) || '[]');
-      if (!acessos.includes(hoje)) {
-        acessos.push(hoje);
-        localStorage.setItem(chave, JSON.stringify(acessos));
-      }
+  
+ngOnInit() {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const usuarioStr = localStorage.getItem('usuarioLogado');
+    if (usuarioStr) {
+      const usuario = JSON.parse(usuarioStr);
+      this.nomeUsuario = usuario.nome || usuario.email || 'Usuário';
+      this.nivelUsuario = this.getLevel(usuario.email); 
     }
-  }
-
-  calcularStreak(): number {
-    if (typeof window !== 'undefined' && window.localStorage && this.username) {
-      const chave = `acessos_${this.username}`;
-      let acessos: string[] = JSON.parse(localStorage.getItem(chave) || '[]');
-      acessos = acessos.sort().reverse();
-      let streak = 0;
-      let dia = new Date();
-      for (const acesso of acessos) {
-        const diaFormatado = dia.toISOString().slice(0, 10);
-        if (acesso === diaFormatado) {
-          streak++;
-          dia.setDate(dia.getDate() - 1);
-        } else {
-          break;
-        }
-      }
-      return streak;
-    }
-    return 0;
   }
 }
+getLevel(email: string): number {
+  const xp = Number(localStorage.getItem(`xp_${email}`)) || 0;
+  return Math.floor(xp / 100) + 1;
+}
+
+  carregarRotinas(){
+    const usuarioStr = localStorage.getItem('usuarioLogado');
+    if(!usuarioStr) {
+      this.rotinas = [];
+      return;
+    }
+
+    try{
+      const usuario = JSON.parse(usuarioStr);
+      const chave = `rotinas_${usuario.email}`
+      const rotinasSalvas = localStorage.getItem(chave);
+      this.rotinas = rotinasSalvas ? JSON.parse(rotinasSalvas) : [];
+    } catch (error) {
+      console.error('Erro ao carregar rotinas', error);
+      this.rotinas = [];
+    }
+  }
+
+  criarNovaRotina() {
+    this.router.navigate(['/criarRotinas']);
+  }
+
+  editarRotina(rotina: any) {
+    localStorage.setItem('rotinaEditando', JSON.stringify(rotina));
+    this.router.navigate(['/editarRotina']);
+  }
+
+  comecarRotina(rotina: any) {
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
+    if (usuario) {
+      localStorage.setItem('rotinaSelecionada', JSON.stringify({ ...rotina, usuarioEmail: usuario.email }));
+      this.router.navigate(['/telaPomodoro']);
+    }
+  }
+
+  onSubmit() {
+    // lógica de login (pode deixar vazio por enquanto)
+    console.log('Formulário enviado!');
+  }
+}
+
