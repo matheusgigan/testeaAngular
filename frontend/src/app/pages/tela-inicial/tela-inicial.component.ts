@@ -9,8 +9,8 @@ import { RouterModule, Router } from '@angular/router';
 })
 export class TelaInicialComponent {
   //Usuário de teste - UI
-  nomeUsuario: string = 'Matheus';
-  nivelUsuario: number = 30;
+  nomeUsuario: string = '';
+  nivelUsuario: number = 1;
   // dailyProgress: number = 96;
   dias: number = 12;
   //Imagem de teste
@@ -22,7 +22,23 @@ export class TelaInicialComponent {
 ){
     this.carregarRotinas();
   }
+
   
+ngOnInit() {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const usuarioStr = localStorage.getItem('usuarioLogado');
+    if (usuarioStr) {
+      const usuario = JSON.parse(usuarioStr);
+      this.nomeUsuario = usuario.nome || usuario.email || 'Usuário';
+      this.nivelUsuario = this.getLevel(usuario.email); 
+    }
+  }
+}
+getLevel(email: string): number {
+  const xp = Number(localStorage.getItem(`xp_${email}`)) || 0;
+  return Math.floor(xp / 100) + 1;
+}
+
   carregarRotinas(){
     const usuarioStr = localStorage.getItem('usuarioLogado');
     if(!usuarioStr) {

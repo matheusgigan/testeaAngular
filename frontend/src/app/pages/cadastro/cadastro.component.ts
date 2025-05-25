@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router'
   styleUrl: './cadastro.component.css'
 })
 export class CadastroComponent {
+  nome = '';
   email = '';
   senha = '';
   erro = '';
@@ -20,7 +21,7 @@ export class CadastroComponent {
   constructor(private router: Router) {}
 
   cadastrar() {
-    if (!this.email || !this.senha) {
+    if (!this.nome || !this.email || !this.senha) {
       this.erro = 'Preencha todos os campos!';
       return;
     }
@@ -30,7 +31,8 @@ export class CadastroComponent {
         this.erro = 'E-mail já cadastrado!';
         return;
       }
-      usuarios.push({ email: this.email, senha: this.senha });
+
+      usuarios.push({ nome: this.nome, email: this.email, senha: this.senha });
       localStorage.setItem('usuarios', JSON.stringify(usuarios));
       this.sucesso = 'Cadastro realizado com sucesso!';
       this.erro = '';
