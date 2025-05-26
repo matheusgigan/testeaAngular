@@ -251,3 +251,26 @@
     margin-left: 0;
   }
 }
+
+.routine-card.concluida {
+  opacity: 0.7;
+  position: relative;
+  text-decoration: line-through;
+  background: #e0ffe0;
+}
+
+.concluido-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #4caf50;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 24px;
+  border-radius: 8px;
+  font-size: 1.2em;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}

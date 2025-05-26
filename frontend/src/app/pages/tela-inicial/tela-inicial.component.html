@@ -48,7 +48,7 @@
       @if (rotinas.length > 0) {
         <div class="routines-container">
           @for(rotina of rotinasFiltradas; track rotina.nome; let i = $index) {
-            <div class="routine-card">
+            <div class="routine-card" [class.concluida]="(rotina.diasConcluidos || 0) >= rotina.meta">
               <div class="routine-info">
                 <h3>
                   {{i+1}}.{{rotina.nome}}
@@ -57,12 +57,25 @@
                 <div class="routine-meta">
                   <span>Meta: {{rotina.meta}} dias</span>
                   <span>Concluídos: {{rotina.diasConcluidos || 0}}</span>
-                   ({{ ((rotina.diasConcluidos || 0) / rotina.meta * 100) | number:'1.0-0' }}%)
+                  ({{ ((rotina.diasConcluidos || 0) / rotina.meta * 100) | number:'1.0-0' }}%)
+                </div>
+                <div *ngIf="(rotina.diasConcluidos || 0) >= rotina.meta" class="concluido-banner">
+                  <span>✔️ CONCLUÍDO</span>
                 </div>
               </div>
               <div class="routine actions">
-                <button class="btn btn-sm" (click)="comecarRotina(rotina)">Iniciar</button>
-                <button class="btn btn-sm btn-secondary" (click)="editarRotina(rotina)">Editar</button>
+                <button 
+                  class="btn btn-sm" 
+                  (click)="comecarRotina(rotina)" 
+                  *ngIf="(rotina.diasConcluidos || 0) < rotina.meta">
+                  Iniciar
+                </button>
+                <button 
+                  class="btn btn-sm btn-secondary" 
+                  (click)="editarRotina(rotina)" 
+                  *ngIf="(rotina.diasConcluidos || 0) < rotina.meta">
+                  Editar
+                </button>
                 <button class="btn-excluir" (click)="excluirRotina(rotina)">&#10006;</button>
               </div>
             </div>
