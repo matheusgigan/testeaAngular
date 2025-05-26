@@ -24,6 +24,7 @@ export class CriarRotinasComponent {
   onSubmit() {
     try {
       const novaRotina = {
+        id: Date.now(),
         nome: this.nomeRotina,
         meta: this.metaRotina,
         tempo: this.tempoRotina,

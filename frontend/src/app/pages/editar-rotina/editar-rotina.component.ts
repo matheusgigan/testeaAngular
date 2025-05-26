@@ -29,7 +29,7 @@ export class EditarRotinaComponent implements OnInit {
   if (usuario) {
     const chave = `rotinas_${usuario.email}`;
     let rotinas = JSON.parse(localStorage.getItem(chave) || '[]');
-    const index = rotinas.findIndex((r: any) => r.nome === this.rotina.nome);
+    const index = rotinas.findIndex((r: any) => r.id === this.rotina.id);
     if (index !== -1) {
       rotinas[index] = this.rotina;
       localStorage.setItem(chave, JSON.stringify(rotinas));
