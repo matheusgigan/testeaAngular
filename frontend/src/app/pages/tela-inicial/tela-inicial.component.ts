@@ -14,7 +14,6 @@ export class TelaInicialComponent {
   nomeUsuario: string = '';
   nivelUsuario: number = 1;
   dias: number = 12;
-  imagemCoruja = 'https://img.lovepik.com/element/45006/3503.png_860.png'; 
   rotinas: any[] = [];
   buscaRotina: string = '';
   filtroConcluido: string = '';
