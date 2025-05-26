@@ -20,18 +20,17 @@ export class TelaInicialComponent {
   darkModeAtivo = false;
   isBrowser: boolean;
 
-  constructor(
+    constructor(
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-    if (this.isBrowser) {
-      this.carregarRotinas();
-    }
+    // Remova o this.carregarRotinas() daqui!
   }
 
   ngOnInit() {
     if (this.isBrowser) {
+      this.carregarRotinas();
       this.registrarAcessoDiario();
       const usuarioStr = localStorage.getItem('usuarioLogado');
       if (usuarioStr) {
