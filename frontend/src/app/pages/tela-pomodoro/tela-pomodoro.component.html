@@ -1,33 +1,38 @@
-<h2>Pomodoro - {{ nomeRotina }}</h2>
-<div style="font-size: 2em; margin: 20px 0;">
-  {{ minutos }}:{{ segundos }}
-</div>
 
-<!-- Botão Iniciar/Retomar e Voltar -->
-<button *ngIf="status === 'parado' || status === 'pausado'" (click)="iniciar()">
-  {{ status === 'pausado' ? 'Retomar' : 'Iniciar' }}
-</button>
-<button *ngIf="status === 'parado'" routerLink="/telaInicial">Voltar</button>
+<div class="pomodoro-page">
+  <div class="pomodoro-container">
+    <div class="pomodoro-content">
+      <h2 class="pomodoro-title">Pomodoro - {{ nomeRotina }}</h2>
+      <div class="pomodoro-timer">
+        {{ minutos }}:{{ segundos }}
+      </div>
 
-<!-- Quando iniciado, aparece apenas Pausar e Cancelar -->
-<div *ngIf="status === 'iniciado'">
-  <button (click)="pausar()">Pausar</button>
-  <button (click)="cancelar()">Cancelar</button>
-</div>
+      <!-- Botão Iniciar/Retomar e Voltar -->
+      <div class="pomodoro-actions">
+        <button *ngIf="status === 'parado' || status === 'pausado'" class="pomodoro-btn" (click)="iniciar()">
+          {{ status === 'pausado' ? 'Retomar' : 'Iniciar' }}
+        </button>
+        <button *ngIf="status === 'parado'" class="pomodoro-btn secondary" routerLink="/telaInicial">Voltar</button>
+      </div>
 
-<!-- Quando pausado, aparece apenas Resetar e Cancelar -->
-<div *ngIf="status === 'pausado'">
-  <button (click)="resetar()">Resetar</button>
-  <button (click)="cancelar()">Cancelar</button>
-</div>
+      <!-- Quando iniciado, aparece apenas Pausar e Cancelar -->
+      <div class="pomodoro-actions" *ngIf="status === 'iniciado'">
+        <button class="pomodoro-btn secondary" (click)="pausar()">Pausar</button>
+        <button class="pomodoro-btn secondary" (click)="cancelar()">Cancelar</button>
+      </div>
 
-<div *ngIf="mensagemConcluida" class="mensagem-concluida">
-  <h3>Rotina concluída! Parabéns!</h3>
-  <button routerLink="/minhasRotinas">Ver minhas rotinas</button>
-</div>
+      <!-- Quando pausado, aparece apenas Resetar e Cancelar -->
+      <div class="pomodoro-actions" *ngIf="status === 'pausado'">
+        <button class="pomodoro-btn" (click)="resetar()">Resetar</button>
+        <button class="pomodoro-btn secondary" (click)="cancelar()">Cancelar</button>
+      </div>
 
-<!-- Os outros botões só aparecem se NÃO estiver concluído -->
-<div *ngIf="!mensagemConcluida">
-  <!-- Botões de iniciar, pausar, resetar, cancelar -->
+      <div *ngIf="mensagemConcluida" class="mensagem-concluida">
+        <h3>Rotina concluída! Parabéns!</h3>
+        <button class="pomodoro-btn" routerLink="/telaInicial">Ver minhas rotinas</button>
+      </div>
+
+      <p style="margin-top: 18px;">Status: {{ status }}</p>
+    </div>
+  </div>
 </div>
-<p>Status: {{ status }}</p>

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Corrija este import!
 
 @Component({
   selector: 'app-editar-rotina',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule], // Inclua CommonModule aqui
   templateUrl: './editar-rotina.component.html',
   styleUrl: './editar-rotina.component.css'
 })
@@ -34,7 +34,10 @@ export class EditarRotinaComponent implements OnInit {
       rotinas[index] = this.rotina;
       localStorage.setItem(chave, JSON.stringify(rotinas));
     }
-    this.router.navigate(['/minhasRotinas']);
+    this.router.navigate(['/telaInicial']);
   }
 }
+  cancelar() {
+    this.router.navigate(['/telaInicial']);
+  }
 }

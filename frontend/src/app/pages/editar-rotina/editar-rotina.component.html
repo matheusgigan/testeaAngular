@@ -1,18 +1,34 @@
-<h2>Editar Rotina</h2>
-<form (ngSubmit)="salvar()">
-  <label>Nome:</label>
-  <input type="text" [(ngModel)]="rotina.nome" name="nome" required><br>
-  <label>Meta de dias:</label>
-  <input type="number" [(ngModel)]="rotina.meta" name="meta" required><br>
-  <label>Tempo (min):</label>
-  <input type="number" [(ngModel)]="rotina.tempo" name="tempo" required><br>
-  <label>Tipo:</label>
-  <select [(ngModel)]="rotina.tipo" name="tipo" required>
-    <option value="estudo">Estudo</option>
-    <option value="trabalho">Trabalho</option>
-    <option value="exercicio">Exercício</option>
-    <option value="lazer">Lazer</option>
-  </select><br>
-  <button type="submit">Salvar</button>
-  <button type="button" routerLink="/minhasRotinas">Cancelar</button>
-</form>
+<div class="editar-page">
+  <div class="editar-container">
+    <div class="editar-content">
+      <h2 class="editar-title">Editar Rotina</h2>
+      <form (ngSubmit)="salvar()">
+        <div class="form-section">
+          <label for="nome">Nome:</label>
+          <input id="nome" type="text" [(ngModel)]="rotina.nome" name="nome" class="form-input" required>
+        </div>
+        <div class="form-section">
+          <label for="meta">Meta de dias:</label>
+          <input id="meta" type="number" [(ngModel)]="rotina.meta" name="meta" class="form-input" required>
+        </div>
+        <div class="form-section">
+          <label for="tempo">Tempo (min):</label>
+          <input id="tempo" type="number" [(ngModel)]="rotina.tempo" name="tempo" class="form-input" required>
+        </div>
+        <div class="form-section">
+          <label for="tipo">Tipo:</label>
+          <select id="tipo" [(ngModel)]="rotina.tipo" name="tipo" class="form-input" required>
+            <option value="estudo">Estudo</option>
+            <option value="trabalho">Trabalho</option>
+            <option value="exercicio">Exercício</option>
+            <option value="lazer">Lazer</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Salvar</button>
+          <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

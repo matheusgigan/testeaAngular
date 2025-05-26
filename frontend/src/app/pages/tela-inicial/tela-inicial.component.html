@@ -3,6 +3,9 @@
     <div class="header-content">
     <!-- Cabeçalho -->
       <h1>Seja bem-vindo, {{ nomeUsuario }} !</h1>
+      <button class="paper-btn btn-small float-right" (click)="alternarDarkMode()">
+        {{ darkModeAtivo ? '☀️ Light Mode' : '🌙 Dark Mode' }}
+      </button>
       <div class="level-badge">LVL {{ nivelUsuario }}</div>
     </div>
   </div>
@@ -21,26 +24,46 @@
     <!-- Coluna de rotinas -->
      <div class="routines-column">
       <div class="routines-header">
-        <h2>Minhas Rotinas</h2>
-        <button class="btn btn-primary" (click)="criarNovaRotina()">
-          + Nova Rotina
-        </button>
-      </div>
+      <h2 style="display:inline-block; margin-right: 16px;">Minhas Rotinas</h2>
+      <input
+        type="text"
+        class="form-control"
+        style="width: 160px; display:inline-block; margin-right: 12px;"
+        placeholder="Buscar por nome"
+        [(ngModel)]="buscaRotina"
+      />
+      <select
+        class="form-control"
+        style="width: 140px; display:inline-block;"
+        [(ngModel)]="filtroConcluido"
+      >
+        <option value="">Todas</option>
+        <option value="concluido">Concluídas</option>
+        <option value="nao-concluido">Não concluídas</option>
+      </select>
+      <button class="btn btn-primary" (click)="criarNovaRotina()" style="margin-left: 12px;">
+        + Nova Rotina
+      </button>
+    </div>
       @if (rotinas.length > 0) {
         <div class="routines-container">
-          @for(rotina of rotinas; track rotina.nome; let i = $index) {
+          @for(rotina of rotinasFiltradas; track rotina.nome; let i = $index) {
             <div class="routine-card">
               <div class="routine-info">
-                <h3>{{i+1}}.{{rotina.nome}}</h3>
+                <h3>
+                  {{i+1}}.{{rotina.nome}}
+                </h3>
                 <p>{{rotina.descricao || 'Sem descrição'}}</p>
                 <div class="routine-meta">
                   <span>Meta: {{rotina.meta}} dias</span>
                   <span>Concluídos: {{rotina.diasConcluidos || 0}}</span>
+                   ({{ ((rotina.diasConcluidos || 0) / rotina.meta * 100) | number:'1.0-0' }}%)
                 </div>
               </div>
               <div class="routine actions">
                 <button class="btn btn-sm" (click)="comecarRotina(rotina)">Iniciar</button>
                 <button class="btn btn-sm btn-secondary" (click)="editarRotina(rotina)">Editar</button>
+                <button class="btn-excluir" (click)="excluirRotina(rotina)">&#10006;</button>
               </div>
             </div>
           }

@@ -32,3 +32,117 @@ body {
 h1, h2, h3 {
   font-family: 'Caveat', cursive;
 }
+
+body.dark-mode-paper {
+  background: #23272f !important;
+  color: #f1f1f1 !important;
+}
+
+/* DARK MODE GLOBAL */
+body.dark-mode-paper,
+body.dark-mode-paper .full-page-container,
+body.dark-mode-paper .main-content,
+body.dark-mode-paper .header-container,
+body.dark-mode-paper .paper,
+body.dark-mode-paper .paper-card {
+  background: #23272f !important;
+  color: #f1f1f1 !important;
+}
+
+/* Botões, inputs e selects */
+body.dark-mode-paper .paper-btn,
+body.dark-mode-paper button,
+body.dark-mode-paper input,
+body.dark-mode-paper select,
+body.dark-mode-paper textarea {
+  background: #2c313a !important;
+  color: #f1f1f1 !important;
+  border-color: #444 !important;
+}
+
+/* Dark mode específico para os cards dentro de .main-content */
+body.dark-mode-paper .main-content .routine-card,
+body.dark-mode-paper .main-content .rotina-card,
+body.dark-mode-paper .main-content .paper-card,
+body.dark-mode-paper .main-content .card,
+body.dark-mode-paper .main-content .owl-container,
+body.dark-mode-paper .main-content .routines-container,
+body.dark-mode-paper .main-content .routines-header,
+body.dark-mode-paper .main-content .routine-info {
+  background: #23272f !important;
+  color: #f1f1f1 !important;
+  border-color: #444 !important;
+}
+
+body.dark-mode-paper .main-content .routine-card h3,
+body.dark-mode-paper .main-content .routine-card p,
+body.dark-mode-paper .main-content .rotina-card h3,
+body.dark-mode-paper .main-content .rotina-card p,
+body.dark-mode-paper .main-content .paper-card h3,
+body.dark-mode-paper .main-content .paper-card p {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode-paper .main-content .owl-stats h3 {
+  color: #b0b3b8 !important; /* cinza claro */
+}
+
+body.dark-mode-paper .level-badge {
+  background: #444 !important;
+  color: #b0b3b8 !important; /* cinza claro */
+  border-color: #444 !important;
+}
+
+/* Dark mode para tela de criar rotinas */
+body.dark-mode-paper .creation-page,
+body.dark-mode-paper .creation-container,
+body.dark-mode-paper .creation-content,
+body.dark-mode-paper .form-section,
+body.dark-mode-paper .checkbox-group,
+body.dark-mode-paper .form-actions {
+  background: #23272f !important;
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode-paper .creation-content h3,
+body.dark-mode-paper .creation-content label,
+body.dark-mode-paper .creation-content p {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode-paper .creation-content input,
+body.dark-mode-paper .creation-content select {
+  background: #2c313a !important;
+  color: #f1f1f1 !important;
+  border-color: #444 !important;
+}
+
+body.dark-mode-paper .creation-content .btn,
+body.dark-mode-paper .creation-content button {
+  background: #444 !important;
+  color: #f1f1f1 !important;
+  border-color: #666 !important;
+}
+
+/* Dark mode para tela de criar rotinas */
+
+body.dark-mode-paper .creation-content, /* Esse bloco muda o card inteiro se mexer no fundo */
+body.dark-mode-paper .form-section,
+body.dark-mode-paper .checkbox-group,
+body.dark-mode-paper .form-actions {
+  background: #1d2127 !important;
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode-paper .creation-content h3,
+body.dark-mode-paper .creation-content label,
+body.dark-mode-paper .creation-content p {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode-paper .creation-content input,
+body.dark-mode-paper .creation-content select {
+  background: #2c313a !important;
+  color: #f1f1f1 !important;
+  border-color: #444 !important;
+}

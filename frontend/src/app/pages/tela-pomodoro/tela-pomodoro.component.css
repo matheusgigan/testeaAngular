@@ -1,0 +1,140 @@
+/* Fundo da página estilo caderno */
+.pomodoro-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f0e6;
+  background-image: 
+    linear-gradient(#d1c7b7 1px, transparent 1px),
+    linear-gradient(90deg, #d1c7b7 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Container principal do Pomodoro */
+.pomodoro-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 28px;
+  background-color: #fff9f0;
+  border: 3px solid #333;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 
+    8px 8px 0 rgba(0,0,0,0.1),
+    inset 0 0 15px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Efeito de linhas de caderno */
+.pomodoro-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(#d1c7b7 1px, transparent 1px),
+    linear-gradient(90deg, #d1c7b7 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.18;
+  z-index: 0;
+}
+
+/* Conteúdo sobreposto às linhas */
+.pomodoro-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título */
+.pomodoro-title {
+  text-align: center;
+  margin-bottom: 18px;
+  font-family: 'Caveat', cursive;
+  font-size: 2.1rem;
+  color: #333;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.08);
+}
+
+/* Timer grande */
+.pomodoro-timer {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 3.2rem;
+  color: #4a6fa5;
+  margin: 18px 0 24px 0;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* Botões */
+.pomodoro-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 18px 0 10px 0;
+}
+
+.pomodoro-btn {
+  padding: 10px 24px;
+  border: 2px solid #333;
+  border-radius: 15px;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+  background-color: #4a6fa5;
+  color: #fff;
+}
+
+.pomodoro-btn.secondary {
+  background-color: #f0e6d2;
+  color: #333;
+}
+
+.pomodoro-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.12);
+}
+
+/* Mensagem de conclusão */
+.mensagem-concluida {
+  background: #e6ffe6;
+  color: #2d7a2d;
+  border: 2px solid #4a6fa5;
+  border-radius: 15px;
+  padding: 18px 12px;
+  margin: 18px 0;
+  text-align: center;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1.2rem;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.07);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .pomodoro-container {
+    padding: 16px 6px;
+    border-radius: 155px 10px 145px 10px/10px 145px 10px 155px;
+  }
+  .pomodoro-title {
+    font-size: 1.4rem;
+  }
+  .pomodoro-timer {
+    font-size: 2.1rem;
+  }
+  .pomodoro-btn {
+    padding: 8px 10px;
+    font-size: 1rem;
+  }
+}

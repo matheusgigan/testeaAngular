@@ -3,7 +3,7 @@
     <div class="creation-content">
       <h1 class="creation-title">Crie sua rotina!</h1>
 
-      <form (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit()" class="tudo">
         <div class="form-section">
           <h3>Insira o nome da sua rotina:</h3>
           <input type="text" [(ngModel)]="nomeRotina" name="nomeRotina" placeholder="Ex: Leitura diária" required>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary" >Entrar</button>
+          <button type="submit" class="btn btn-primary" >Criar</button>
           <button type="button" class="btn btn-secondary" (click)="voltarParaInicio()">Cancelar</button>
         </div>
       </form>

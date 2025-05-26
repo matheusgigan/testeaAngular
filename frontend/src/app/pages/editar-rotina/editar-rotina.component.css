@@ -1,0 +1,156 @@
+/* Fundo da página - estilo caderno */
+.editar-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f0e6;
+  background-image: 
+    linear-gradient(#d1c7b7 1px, transparent 1px),
+    linear-gradient(90deg, #d1c7b7 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Container principal */
+.editar-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  background-color: #fff9f0;
+  border: 3px solid #333;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 
+    8px 8px 0 rgba(0,0,0,0.1),
+    inset 0 0 15px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de linhas de caderno */
+.editar-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(#d1c7b7 1px, transparent 1px),
+    linear-gradient(90deg, #d1c7b7 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+/* Conteúdo do formulário */
+.editar-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Título */
+.editar-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: 'Caveat', cursive;
+  font-size: 2.2rem;
+  color: #333;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+}
+
+/* Grupos de formulário */
+.form-section {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.form-section h3 {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #4a6fa5;
+}
+
+/* Campos de input */
+.form-input {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border: 2px solid #333;
+  border-radius: 15px;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1rem;
+  background-color: rgba(255,255,255,0.7);
+}
+
+/* Checkboxes personalizados */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1.1rem;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #4a6fa5;
+}
+
+/* Botões */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 10px 25px;
+  border: 2px solid #333;
+  border-radius: 15px;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+  background-color: #4a6fa5;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f0e6d2;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .editar-container {
+    padding: 20px;
+    border-radius: 155px 10px 145px 10px/10px 145px 10px 155px;
+  }
+  
+  .editar-title {
+    font-size: 1.8rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+}

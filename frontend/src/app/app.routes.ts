@@ -6,6 +6,7 @@ import { CriarRotinasComponent } from './pages/criar-rotinas/criar-rotinas.compo
 import { TelaPomodoroComponent } from './pages/tela-pomodoro/tela-pomodoro.component';
 import { MinhasRotinasComponent } from './pages/minhas-rotinas/minhas-rotinas.component';
 
+
 export const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },

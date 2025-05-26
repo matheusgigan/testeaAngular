@@ -117,5 +117,19 @@ export class TelaPomodoroComponent {
     this.addXp(xpGanho);
     alert(`Parabéns! Você ganhou ${xpGanho} XP!`);
   }
+
+
+ // Script para alternar o modo escuro
+
+  darkModeAtivo = false;
+
+alternarDarkMode() {
+  this.darkModeAtivo = !this.darkModeAtivo;
+  if (this.darkModeAtivo) {
+    document.body.classList.add('dark-mode-paper');
+  } else {
+    document.body.classList.remove('dark-mode-paper');
+  }
+}
 }
   
