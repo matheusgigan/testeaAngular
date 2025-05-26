@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -18,25 +18,32 @@ export class TelaInicialComponent {
   buscaRotina: string = '';
   filtroConcluido: string = '';
   darkModeAtivo = false;
+  isBrowser: boolean;
 
-  constructor(private router: Router) {
-    this.carregarRotinas();
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+    if (this.isBrowser) {
+      this.carregarRotinas();
+    }
   }
 
   ngOnInit() {
-    this.registrarAcessoDiario();
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (this.isBrowser) {
+      this.registrarAcessoDiario();
       const usuarioStr = localStorage.getItem('usuarioLogado');
       if (usuarioStr) {
         const usuario = JSON.parse(usuarioStr);
         this.nomeUsuario = usuario.nome || usuario.email || 'Usuário';
-        this.nivelUsuario = this.getLevel(usuario.email); 
+        this.nivelUsuario = this.getLevel(usuario.email);
       }
     }
   }
 
   getLevel(email: string): number {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (this.isBrowser) {
       const xp = Number(localStorage.getItem(`xp_${email}`)) || 0;
       return Math.floor(xp / 100) + 1;
     }
@@ -44,7 +51,7 @@ export class TelaInicialComponent {
   }
 
   carregarRotinas() {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (this.isBrowser) {
       const usuarioStr = localStorage.getItem('usuarioLogado');
       if (!usuarioStr) {
         this.rotinas = [];
@@ -69,14 +76,14 @@ export class TelaInicialComponent {
   }
 
   editarRotina(rotina: any) {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (this.isBrowser) {
       localStorage.setItem('rotinaEditando', JSON.stringify(rotina));
       this.router.navigate(['/editarRotina']);
     }
   }
 
   comecarRotina(rotina: any) {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (this.isBrowser) {
       const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
       if (usuario) {
         localStorage.setItem('rotinaSelecionada', JSON.stringify({ ...rotina, usuarioEmail: usuario.email }));
@@ -115,7 +122,7 @@ export class TelaInicialComponent {
   }
 
   registrarAcessoDiario() {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (this.isBrowser) {
       const hoje = new Date().toDateString();
       const ultimoAcesso = localStorage.getItem('ultimoAcesso');
       let sequencia = Number(localStorage.getItem('sequenciaFoguinho')) || 0;
@@ -138,7 +145,7 @@ export class TelaInicialComponent {
   }
 
   excluirRotina(rotina: any) {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (this.isBrowser) {
       const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
       if (usuario) {
         const chave = `rotinas_${usuario.email}`;
