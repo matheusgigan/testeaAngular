@@ -97,6 +97,7 @@
   height: auto;
   margin-bottom: 15px;
   align-content: center;
+  display: inline-block; 
 }
 
 .owl-stats h3 {
