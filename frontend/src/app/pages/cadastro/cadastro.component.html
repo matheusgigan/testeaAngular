@@ -2,6 +2,9 @@
   <div class="cadastro-container">
     <div class="cadastro-content">
       <h2 class="cadastro-title">Cadastro</h2>
+      <button class="paper-btn btn-small float-right" (click)="alternarDarkMode()">
+        {{ darkModeAtivo ? '☀️ Light Mode' : '🌙 Dark Mode' }}
+      </button> 
       <form (ngSubmit)="cadastrar()">
         <div class="form-group">
           <label for="nome">Nome</label>

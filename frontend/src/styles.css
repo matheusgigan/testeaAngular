@@ -33,116 +33,645 @@ h1, h2, h3 {
   font-family: 'Caveat', cursive;
 }
 
+/* Dark mode básico: personalize as cores como preferir */
 body.dark-mode-paper {
-  background: #23272f !important;
-  color: #f1f1f1 !important;
+  background: #23272f !important;   /* Cor de fundo */
+  color: #f5f0e6 !important;        /* Cor do texto */
 }
 
-/* DARK MODE GLOBAL */
-body.dark-mode-paper,
-body.dark-mode-paper .full-page-container,
-body.dark-mode-paper .main-content,
-body.dark-mode-paper .header-container,
-body.dark-mode-paper .paper,
-body.dark-mode-paper .paper-card {
-  background: #23272f !important;
-  color: #f1f1f1 !important;
+body.dark-mode-paper h1,
+body.dark-mode-paper h2,
+body.dark-mode-paper h3,
+body.dark-mode-paper h4,
+body.dark-mode-paper h5,
+body.dark-mode-paper h6 {
+  color: #444 !important;        /* Títulos */
 }
 
-/* Botões, inputs e selects */
-body.dark-mode-paper .paper-btn,
+body.dark-mode-paper a {
+  color: #90caf9 !important;        /* Links */
+}
+
 body.dark-mode-paper button,
-body.dark-mode-paper input,
-body.dark-mode-paper select,
-body.dark-mode-paper textarea {
-  background: #2c313a !important;
-  color: #f1f1f1 !important;
-  border-color: #444 !important;
+body.dark-mode-paper .btn {
+  background: #353a45 !important;   /* Botões */
+  color: #f5f0e6 !important;
+  border: 1px solid #444 !important;
 }
 
-/* Dark mode específico para os cards dentro de .main-content */
-body.dark-mode-paper .main-content .routine-card,
-body.dark-mode-paper .main-content .rotina-card,
-body.dark-mode-paper .main-content .paper-card,
-body.dark-mode-paper .main-content .card,
-body.dark-mode-paper .main-content .owl-container,
-body.dark-mode-paper .main-content .routines-container,
-body.dark-mode-paper .main-content .routines-header,
-body.dark-mode-paper .main-content .routine-info {
-  background: #23272f !important;
-  color: #f1f1f1 !important;
-  border-color: #444 !important;
+body.dark-mode-paper input{
+  background: #23272f !important;   /* Campos de formulário */
+  color: #f5f0e6 !important;
+  border: 1px solid #444 !important;
+}
+body.dark-mode-paper textarea,
+body.dark-mode-paper select {
+  background: #23272f !important;   /* Campos de formulário */
+  color: #f5f0e6 !important;
+  border: 1px solid #444 !important;
 }
 
-body.dark-mode-paper .main-content .routine-card h3,
-body.dark-mode-paper .main-content .routine-card p,
-body.dark-mode-paper .main-content .rotina-card h3,
-body.dark-mode-paper .main-content .rotina-card p,
-body.dark-mode-paper .main-content .paper-card h3,
-body.dark-mode-paper .main-content .paper-card p {
-  color: #f1f1f1 !important;
+/*mudanças na tela principal*/
+body.dark-mode-paper .concluido-banner { /*tentando deixar verde o card concluido*/
+  background: #3c6e4a;
+  color: #eaffea;
+  border-radius: 4px;
 }
 
-body.dark-mode-paper .main-content .owl-stats h3 {
-  color: #b0b3b8 !important; /* cinza claro */
+body.dark-mode-paper .routine-card.concluida { /*alterando a cor da letra dos risquinho*/
+  color: #444;
+  border: 1px solid #444;
+  box-shadow: 2px 2px 0 #181a20;
 }
 
-body.dark-mode-paper .level-badge {
-  background: #444 !important;
-  color: #b0b3b8 !important; /* cinza claro */
-  border-color: #444 !important;
+body.dark-mode-paper .routine-card.concluida h3 { /*alterando a cor do texto dos card concluido*/
+  color: #444 !important;
 }
 
-/* Dark mode para tela de criar rotinas */
-body.dark-mode-paper .creation-page,
+body.dark-mode-paper .routine-card { /*alterando a cor de fundo e da letra dos card normal*/
+  background: #2d313a;
+  color: #f5f0e6 ;
+  border: 1px solid #444;
+  box-shadow: 2px 2px 0 #181a20; 
+}
+
+body.dark-mode-paper .routine-card h3 { /*alterando a cor do texto dos card*/
+  color: #f5f0e6 !important;
+}
+
+body.dark-mode-paper .full-page-container { /*alterando a cor de fundo da tela principal*/
+  background: #23272f;
+  background-image: 
+    linear-gradient(#353a45 1px, transparent 1px), /* Linhas horizontais escuras */
+    linear-gradient(90deg, #353a45 1px, transparent 1px); /* Linhas verticais escuras */
+  background-size: 20px 20px; /* Espaçamento das linhas */
+}
+
+body.dark-mode-paper .header-container::before{ /*alterando a cor de fundo do header*/
+  background: #2d313a !important;
+   content: "";
+  display: block;
+}
+
+body.dark-mode-paper .header-container { /*alterando a cor de fundo do header*/
+  background: #2d313a !important;
+  color: #f5f0e6 !important;
+  border-bottom: 1px solid #444 !important;
+}
+
+body.dark-mode-paper .header-container h1{
+  color: #ffe082 !important
+}
+
+body.dark-mode-paper .owl-container{ /*alterando a cor de fundo do container da coruja e a letra*/
+  background-color: #353a45;
+  color: #f5f0e6;
+  border: 1px solid #444;
+  box-shadow: 2px 2px 0 #181a20;
+}
+body.dark-mode-paper .owl-container .owl-stats h3{ /*alterando a cor do texto  progresso diario*/
+  color: #f5f0e6 !important;
+}
+
+body.dark-mode-paper .routines-header h2{ /*alterando a cor do texto Minhas Rotinas*/
+  color: #f5f0e6 !important;
+}
+/*fim mudanças na tela principal*/
+
+
+
+
+
+
+
+
+/*inicio mudanças na de criaçao de rotina*/
+body.dark-mode-paper .creation-page {
+  background-color: #23272f; /* Fundo escuro da página */
+  background-image: 
+    linear-gradient(#353a45 1px, transparent 1px), /* Linhas horizontais escuras */
+    linear-gradient(90deg, #353a45 1px, transparent 1px); /* Linhas verticais escuras */
+  background-size: 20px 20px; /* Espaçamento das linhas */
+}
+
+body.dark-mode-paper .creation-container {
+  background-color: #2d313a; /* Fundo escuro do container principal */
+  border: 3px solid #888; /* Borda mais clara para contraste */
+  box-shadow: 
+    8px 8px 0 #181a20, /* Sombra externa escura */
+    inset 0 0 15px #0005; /* Sombra interna suave */
+  color: white !important ;
+}
+
+body.dark-mode-paper .creation-container h3{
+  color:white !important;
+}
+
+body.dark-mode-paper .creation-container::before {
+  background-image: 
+    linear-gradient(#353a45 1px, transparent 1px), /* Linhas horizontais do efeito caderno */
+    linear-gradient(90deg, #353a45 1px, transparent 1px); /* Linhas verticais do efeito caderno */
+  opacity: 0.15; /* Linhas mais suaves/translúcidas */
+}
+
+body.dark-mode-paper .creation-title {
+  color: #ffe082 !important; /* Título em amarelo claro */
+  text-shadow: 1px 1px 0 #181a20; /* Sombra escura para destaque */
+}
+
+body.dark-mode-paper .form-section h3 {
+  color: #90caf9; /* Subtítulo em azul claro */
+}
+
+body.dark-mode-paper .form-input {
+  background-color: #23272f; /* Fundo escuro dos campos */
+  color: #f5f0e6; /* Texto claro nos campos */
+  border: 2px solid #555; /* Borda escura nos campos */
+}
+
+body.dark-mode-paper .checkbox-item {
+  color: #f5f0e6; /* Texto claro nos checkboxes */
+}
+
+body.dark-mode-paper .checkbox-item input[type="checkbox"] {
+  accent-color: #90caf9; /* Cor azul clara para o checkbox marcado */
+}
+
+body.dark-mode-paper .btn {
+  border: 2px solid #888; /* Borda clara nos botões */
+  box-shadow: 3px 3px 0 #181a20; /* Sombra escura nos botões */
+  background-color: #353a45; /* Fundo escuro dos botões */
+  color: #f5f0e6; /* Texto claro nos botões */
+}
+
+body.dark-mode-paper .btn-primary {
+  background-color: #4a6fa5; /* Fundo azul para botão primário */
+  color: #fff; /* Texto branco no botão primário */
+}
+
+body.dark-mode-paper .btn-secondary {
+  background-color: #23272f; /* Fundo escuro para botão secundário */
+  color: #f5f0e6; /* Texto claro no botão secundário */
+}
+
+body.dark-mode-paper .btn:hover {
+  background-color: #22252b; /* Fundo ainda mais escuro ao passar o mouse */
+  box-shadow: 5px 5px 0 #181a20; /* Sombra mais forte ao passar o mouse */
+}
+/*fim mudanças na de criaçao de rotina*/
+
+
+
+
+
+/*inicio mudanças na ediçao de rotina*/
+body.dark-mode-paper .editar-page {
+  background-color: #23272f;
+  background-image: 
+    linear-gradient(#353a45 1px, transparent 1px),
+    linear-gradient(90deg, #353a45 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+body.dark-mode-paper .editar-container::before {
+  content: none !important;
+  background: none !important;
+  background-image: none !important;
+  display: none !important;
+}
+
+body.dark-mode-paper .editar-container {
+  background-color: #2d313a !important;
+  border: 3px solid #888;
+  box-shadow: 8px 8px 0 #181a20, inset 0 0 15px #0005;
+  color: #f5f0e6 !important;
+  background-image: none !important; /* Garante que não terá riscos */
+}
+
+body.dark-mode-paper .editar-title {
+  color: #ffe082 !important;
+  text-shadow: 1px 1px 0 #181a20;
+}
+
+body.dark-mode-paper .form-section label {
+  color: #90caf9;
+}
+
+body.dark-mode-paper .form-input {
+  background-color: #23272f;
+  color: #f5f0e6;
+  border: 2px solid #555;
+}
+
+body.dark-mode-paper .form-actions .btn {
+  border: 2px solid #888;
+  box-shadow: 3px 3px 0 #181a20;
+  background-color: #353a45;
+  color: #f5f0e6;
+}
+
+body.dark-mode-paper .form-actions .btn-primary {
+  background-color: #4a6fa5;
+  color: #fff;
+}
+
+body.dark-mode-paper .form-actions .btn-secondary {
+  background-color: #23272f;
+  color: #f5f0e6;
+}
+
+body.dark-mode-paper .form-actions .btn:hover {
+  background-color: #22252b;
+  box-shadow: 5px 5px 0 #181a20;
+}
+/*fim mudanças na ediçao de rotina*/
+
+
+
+
+
+
+/*inicio mudanças na tela de pomodoro*/
+body.dark-mode-paper .pomodoro-page {
+  background-color: #23272f;
+  min-height: 100vh;
+  background-image: 
+    linear-gradient(#353a45 1px, transparent 1px),
+    linear-gradient(90deg, #353a45 1px, transparent 1px);
+  background-size: 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+body.dark-mode-paper .pomodoro-container::before{
+  content: none !important;
+  background: none !important;
+  background-image: none !important;
+  display: none !important;
+}
+
+body.dark-mode-paper .pomodoro-container {
+  background-color: #2d313a;
+  border: 3px solid #888;
+  box-shadow: 8px 8px 0 #181a20, inset 0 0 15px #0005;
+  color: #f5f0e6;
+  border-radius: 16px;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body.dark-mode-paper .pomodoro-title {
+  color: #ffe082 !important;
+  text-shadow: 1px 1px 0 #181a20;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+body.dark-mode-paper .progress-section {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+body.dark-mode-paper .progress-info {
+  display: flex;
+  justify-content: space-between;
+  color: #90caf9;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+body.dark-mode-paper .progress {
+  width: 100%;
+  height: 18px;
+  background: #23272f;
+  border: 1px solid #444;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+body.dark-mode-paper .progress.margin-bottom {
+  margin-bottom: 1.2rem;
+}
+
+body.dark-mode-paper .bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4a6fa5 60%, #90caf9 100%);
+  transition: width 0.4s;
+}
+
+body.dark-mode-paper .bar.striped {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #4a6fa5,
+    #4a6fa5 10px,
+    #90caf9 10px,
+    #90caf9 20px
+  );
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+
+body.dark-mode-paper .pomodoro-timer {
+  font-size: 4rem;
+  font-family: 'Caveat', cursive, sans-serif;
+  color: #90caf9;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 0 #181a20;
+  letter-spacing: 2px;
+}
+
+body.dark-mode-paper .pomodoro-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+body.dark-mode-paper .pomodoro-btn {
+  margin: 0 0.5rem;
+  border: 2px solid #888;
+  box-shadow: 3px 3px 0 #181a20;
+  background-color: #353a45;
+  color: #f5f0e6;
+  font-size: 1.1rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+body.dark-mode-paper .pomodoro-btn.secondary {
+  background-color: #23272f;
+  color: #f5f0e6;
+}
+
+body.dark-mode-paper .pomodoro-btn:hover {
+  background-color: #22252b;
+  box-shadow: 5px 5px 0 #181a20;
+}
+
+body.dark-mode-paper .mensagem-concluida {
+  margin-top: 2rem;
+  background: #263238;
+  border: 2px solid #4caf50;
+  color: #c8e6c9;
+  padding: 1.2rem 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 2px 2px 0 #181a20;
+}
+
+body.dark-mode-paper .mensagem-concluida h3 {
+  color: #4caf50;
+  margin-bottom: 1rem;
+}
+/*fim mudanças na tela de pomodoro*/
+
+
+/*inicio mudanças na tela de login*/
+body.dark-mode-paper .login-page {
+  min-height: 100vh;
+  background-color: #23272f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: 
+    linear-gradient(#353a45 1px, transparent 1px),
+    linear-gradient(90deg, #353a45 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+body.dark-mode-paper .login-container::before {
+  content: none !important;
+  background: none !important;
+  background-image: none !important;
+  display: none !important;
+}
+
+body.dark-mode-paper .login-container {
+  background-color: #2d313a;
+  border: 3px solid #888;
+  box-shadow: 8px 8px 0 #181a20, inset 0 0 15px #0005;
+  border-radius: 16px;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  color: #f5f0e6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 340px;
+}
+
+body.dark-mode-paper .login-title {
+  color: #ffe082 !important;
+  text-shadow: 1px 1px 0 #181a20;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Caveat', cursive;
+}
+
+body.dark-mode-paper .login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+body.dark-mode-paper .login-form label {
+  color: #90caf9;
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+body.dark-mode-paper .login-form input[type="text"],
+body.dark-mode-paper .login-form input[type="password"] {
+  background-color: #23272f;
+  color: #f5f0e6;
+  border: 2px solid #555;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  font-size: 1.1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+body.dark-mode-paper .login-form input:focus {
+  border-color: #90caf9;
+}
+
+body.dark-mode-paper .login-btn {
+  border: 2px solid #888;
+  box-shadow: 3px 3px 0 #181a20;
+  background-color: #4a6fa5;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+body.dark-mode-paper .login-btn:hover {
+  background-color: #22252b;
+  color: #ffe082;
+  box-shadow: 5px 5px 0 #181a20;
+}
+
+body.dark-mode-paper .login-error {
+  color: #ff5252;
+  background: #2d1a1a;
+  border: 1px solid #ff5252;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+}
+/*fim mudanças na tela de login*/
+
+
+
+
+/*inicio mudanças na tela de cadastro*/
+body.dark-mode-paper .cadastro-page {
+  min-height: 100vh;
+  background-color: #23272f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: 
+    linear-gradient(#353a45 1px, transparent 1px),
+    linear-gradient(90deg, #353a45 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+body.dark-mode-paper .cadastro-container::before {
+  content: none !important;
+  background: none !important;
+  background-image: none !important;
+  display: none !important;
+}
+
+body.dark-mode-paper .cadastro-container {
+  background-color: #2d313a;
+  border: 3px solid #888;
+  box-shadow: 8px 8px 0 #181a20, inset 0 0 15px #0005;
+  border-radius: 16px;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  color: #f5f0e6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 340px;
+}
+
+body.dark-mode-paper .cadastro-title {
+  color: #ffe082 !important;
+  text-shadow: 1px 1px 0 #181a20;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Caveat', cursive;
+}
+
+body.dark-mode-paper .cadastro-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+body.dark-mode-paper .cadastro-form label {
+  color: #90caf9;
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+body.dark-mode-paper .cadastro-form input[type="text"],
+body.dark-mode-paper .cadastro-form input[type="password"],
+body.dark-mode-paper .cadastro-form input[type="email"] {
+  background-color: #23272f;
+  color: #f5f0e6;
+  border: 2px solid #555;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  font-size: 1.1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+body.dark-mode-paper .cadastro-form input:focus {
+  border-color: #90caf9;
+}
+
+body.dark-mode-paper .cadastro-btn {
+  border: 2px solid #888;
+  box-shadow: 3px 3px 0 #181a20;
+  background-color: #4a6fa5;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+body.dark-mode-paper .cadastro-btn:hover {
+  background-color: #22252b;
+  color: #ffe082;
+  box-shadow: 5px 5px 0 #181a20;
+}
+
+body.dark-mode-paper .cadastro-error {
+  color: #ff5252;
+  background: #2d1a1a;
+  border: 1px solid #ff5252;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+}
+/*fim mudanças na tela de cadastro*/
+
+body.dark-mode-paper .cadastro-container,
+body.dark-mode-paper .login-container,
+body.dark-mode-paper .editar-container,
 body.dark-mode-paper .creation-container,
-body.dark-mode-paper .creation-content,
-body.dark-mode-paper .form-section,
-body.dark-mode-paper .checkbox-group,
-body.dark-mode-paper .form-actions {
-  background: #23272f !important;
-  color: #f1f1f1 !important;
+body.dark-mode-paper .pomodoro-container {
+  border: 2px solid #888;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 0 2px 16px #181a20, 8px 8px 0 #181a20, inset 0 0 15px #0005;
 }
 
-body.dark-mode-paper .creation-content h3,
-body.dark-mode-paper .creation-content label,
-body.dark-mode-paper .creation-content p {
-  color: #f1f1f1 !important;
+body.dark-mode-paper .cadastro-form,
+body.dark-mode-paper .login-form {
+  gap: 0.7rem; /* antes era 1.2rem */
 }
 
-body.dark-mode-paper .creation-content input,
-body.dark-mode-paper .creation-content select {
-  background: #2c313a !important;
-  color: #f1f1f1 !important;
-  border-color: #444 !important;
+body.dark-mode-paper .form-group {
+  margin-bottom: 0.7rem; /* antes era 1.1rem */
 }
 
-body.dark-mode-paper .creation-content .btn,
-body.dark-mode-paper .creation-content button {
-  background: #444 !important;
-  color: #f1f1f1 !important;
-  border-color: #666 !important;
+body.dark-mode-paper .cadastro-form input[type="text"],
+body.dark-mode-paper .cadastro-form input[type="password"],
+body.dark-mode-paper .cadastro-form input[type="email"],
+body.dark-mode-paper .login-form input[type="text"],
+body.dark-mode-paper .login-form input[type="password"] {
+  padding: 0.5rem 0.8rem; /* antes era 0.7rem 1rem */
+  font-size: 1rem; /* antes era 1.1rem */
 }
 
-/* Dark mode para tela de criar rotinas */
-
-body.dark-mode-paper .creation-content, /* Esse bloco muda o card inteiro se mexer no fundo */
-body.dark-mode-paper .form-section,
-body.dark-mode-paper .checkbox-group,
-body.dark-mode-paper .form-actions {
-  background: #1d2127 !important;
-  color: #f1f1f1 !important;
+body.dark-mode-paper .cadastro-btn,
+body.dark-mode-paper .login-btn {
+  padding: 0.5rem 1rem; /* antes era 0.7rem 1.5rem */
+  font-size: 1rem; /* antes era 1.1rem */
 }
 
-body.dark-mode-paper .creation-content h3,
-body.dark-mode-paper .creation-content label,
-body.dark-mode-paper .creation-content p {
-  color: #f1f1f1 !important;
-}
-
-body.dark-mode-paper .creation-content input,
-body.dark-mode-paper .creation-content select {
-  background: #2c313a !important;
-  color: #f1f1f1 !important;
-  border-color: #444 !important;
-}

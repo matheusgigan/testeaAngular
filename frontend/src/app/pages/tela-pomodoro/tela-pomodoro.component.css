@@ -202,3 +202,117 @@
     font-size: 1rem;
   }
 }
+
+
+/* Dark mode para tela inicial */
+body.dark-mode-paper,
+.dark-mode-paper {
+  background: #23272f !important;
+  color: #f5f0e6 !important;
+}
+
+.dark-mode-paper .full-page-container {
+  background: #23272f;
+  color: #f5f0e6;
+}
+
+.dark-mode-paper .header-container,
+.dark-mode-paper .header-content {
+  background: #23272f;
+  color: #f5f0e6;
+  border-bottom: 1px solid #444;
+}
+
+.dark-mode-paper .level-badge {
+  background: #353a45;
+  color: #f5f0e6;
+  border: 1px solid #555;
+}
+
+.dark-mode-paper .main-content {
+  background: #23272f;
+}
+
+.dark-mode-paper .owl-container {
+  background: #2d313a;
+  border: 1px solid #444;
+  box-shadow: 4px 4px 0 #181a20, 0 0 12px #0002 inset;
+}
+
+.dark-mode-paper .owl-stats h3,
+.dark-mode-paper .owl-stats p {
+  color: #f5f0e6;
+}
+
+.dark-mode-paper .routines-header {
+  background: #23272f;
+  border-bottom: 1px solid #444;
+}
+
+.dark-mode-paper .routines-container {
+  background: #23272f;
+}
+
+.dark-mode-paper .routine-card {
+  background: #2d313a;
+  color: #f5f0e6;
+  border: 1px solid #444;
+  box-shadow: 2px 2px 0 #181a20;
+}
+
+.dark-mode-paper .routine-card.concluida {
+  background: #25302b;
+  border-color: #3c6e4a;
+}
+
+.dark-mode-paper .routine-info h3,
+.dark-mode-paper .routine-info p,
+.dark-mode-paper .routine-meta {
+  color: #f5f0e6;
+}
+
+.dark-mode-paper .concluido-banner {
+  background: #3c6e4a;
+  color: #eaffea;
+  border-radius: 4px;
+}
+
+.dark-mode-paper .routine.actions .btn,
+.dark-mode-paper .btn,
+.dark-mode-paper button,
+.dark-mode-paper .btn-primary {
+  background: #4a6fa5;
+  color: #fff;
+  border: 1px solid #888;
+}
+
+.dark-mode-paper .btn-secondary {
+  background: #23272f;
+  color: #f5f0e6;
+  border: 1px solid #888;
+}
+
+.dark-mode-paper .btn-excluir {
+  background: #2d313a;
+  color: #ffb3b3;
+  border: 1px solid #a33;
+}
+
+.dark-mode-paper input,
+.dark-mode-paper select,
+.dark-mode-paper textarea {
+  background: #23272f;
+  color: #f5f0e6;
+  border: 1px solid #444;
+}
+
+.dark-mode-paper .empty-routines {
+  background: #23272f;
+  color: #aaa;
+  border: 1px dashed #444;
+}
+
+.dark-mode-paper ::selection {
+  background: #4a6fa5;
+  color: #fff;
+}
