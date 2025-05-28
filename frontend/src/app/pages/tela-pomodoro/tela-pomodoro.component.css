@@ -56,10 +56,74 @@
   align-items: center;
 }
 
+/* Progresso */
+/* Progress section - Paper CSS adaptation */
+.progress-section {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1.1rem;
+  color: #4a6fa5;
+}
+
+/* Paper CSS progress bar styles */
+.progress {
+  height: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  background-color: #f0e6d2;
+  border-radius: 4px;
+  border: 1px solid #d1c7b7;
+}
+
+.progress .bar {
+  height: 100%;
+  background-color: #4a6fa5;
+  transition: width 0.3s ease;
+}
+
+/* Striped animation */
+.progress .bar.striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .progress-info {
+    font-size: 0.9rem;
+  }
+}
+
 /* Título */
 .pomodoro-title {
   text-align: center;
-  margin-bottom: 18px;
+  margin-bottom: 8px;
   font-family: 'Caveat', cursive;
   font-size: 2.1rem;
   color: #333;

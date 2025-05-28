@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common'; // Adicione esta linha
 import { OnInit } from '@angular/core';
+import { ToastService } from '../../services/toast.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tela-pomodoro',
   standalone: true,
@@ -16,6 +18,13 @@ export class TelaPomodoroComponent {
   status: 'parado' | 'iniciado' | 'pausado' = 'parado';
   private intervalId: any = null;
   mensagemConcluida: boolean = false;
+  diasConcluidos: number = 0;
+  meta: number = 0;
+
+  constructor(
+    private toast: ToastService,
+    private router: Router
+  ){}
 
   iniciar() {
     if (this.status !== 'iniciado') {
@@ -45,8 +54,10 @@ export class TelaPomodoroComponent {
       this.nomeRotina = rotina.nome;
       this.tempoPadrao = rotina.tempo * 60; // tempo em minutos para segundos
       this.tempoRestante = this.tempoPadrao;
-      // Você pode puxar outros dados se quiser
+      this.diasConcluidos = rotina.diasConcluidos;
+      this.meta = rotina.meta;
     }
+    
   }
   resetar() {
     this.status = 'parado';
@@ -98,6 +109,7 @@ export class TelaPomodoroComponent {
   getLevelProgressPercent(): number {
     return (this.getLevelProgress() / 100) * 100;
   }
+
   private finalizarRotina() {
   const rotinaSelecionada = JSON.parse(localStorage.getItem('rotinaSelecionada') || 'null');
   if (rotinaSelecionada && rotinaSelecionada.usuarioEmail) {
@@ -113,12 +125,18 @@ export class TelaPomodoroComponent {
       localStorage.setItem(chave, JSON.stringify(rotinas));
     }
   }
-  const xpGanho = 20; // Defina quanto XP por rotina
+    const xpGanho = 20; // Defina quanto XP por rotina
     this.addXp(xpGanho);
-    alert(`Parabéns! Você ganhou ${xpGanho} XP!`);
+    this.toast.showSuccess(`Parabéns! Você ganhou ${xpGanho} XP!`);
+    setTimeout(() => {
+          this.router.navigate(['/telaInicial']);
+        }, 2000);
   }
 
-
+  getProgressPercentage(): number {
+  if (this.meta === 0) return 0;
+  return Math.round((this.diasConcluidos / this.meta) * 100);
+  }
  // Script para alternar o modo escuro
 
   darkModeAtivo = false;

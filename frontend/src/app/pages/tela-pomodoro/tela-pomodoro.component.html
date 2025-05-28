@@ -3,6 +3,17 @@
   <div class="pomodoro-container">
     <div class="pomodoro-content">
       <h2 class="pomodoro-title">Temporizador - {{ nomeRotina }}</h2>
+
+      <div class="progress-section">
+        <div class="progress-info">
+          <span>{{ diasConcluidos }} de {{ meta }} dias concluídos</span>
+          <span>{{ getProgressPercentage() }}%</span>
+        </div>
+        <div class="progress margin-bottom">
+          <div class="bar striped" [style.width.%]="getProgressPercentage()"></div>
+        </div>
+      </div>
+
       <div class="pomodoro-timer">
         {{ minutos }}:{{ segundos }}
       </div>
