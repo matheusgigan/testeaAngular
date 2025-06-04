@@ -642,5 +642,8 @@ body.dark-mode-paper .form-group {
   margin-bottom: 0.7rem; /* antes era 1.1rem */
 }
 
-
+body.dark-mode-paper .empty-routines{
+  color: #f5f0e6;
+  background-color: #23272f;
+}
 
